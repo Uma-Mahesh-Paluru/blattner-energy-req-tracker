@@ -50,6 +50,7 @@ function renderBudgetPanel() {
   const defaultTrades=['Civil','Electrical','Mechanical','Structural','Plumbing','Instrumentation'];
   const loadedTrades=(typeof tradeOptions!=='undefined'&&tradeOptions.length>0)?tradeOptions:defaultTrades;
   const allTrades=Array.from(new Set([...loadedTrades,...Object.keys(spendByTrade)]));
+  if(allTrades.length===0)allTrades.push(...defaultTrades);
 
   let totalBudget = 0, totalSpent = 0;
   const rows = allTrades.map(trade => {
@@ -592,7 +593,15 @@ tr.ovd-row td{background:#fff5f5}tr.ovd-row:hover td{background:var(--dbg)}
     <div style="margin-top:14px;padding-top:14px;border-top:1px solid var(--border)">
   <div style="font-size:11px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.4px;margin-bottom:8px">➕ Add / Set Budget for a Trade</div>
   <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap">
-    <select id="budgetTradeSelect" class="flt" style="min-width:160px"><option value="">— Select Trade —</option></select>
+    <select id="budgetTradeSelect" class="flt" style="min-width:160px">
+      <option value="">— Select Trade —</option>
+      <option value="Civil">Civil</option>
+      <option value="Electrical">Electrical</option>
+      <option value="Mechanical">Mechanical</option>
+      <option value="Structural">Structural</option>
+      <option value="Plumbing">Plumbing</option>
+      <option value="Instrumentation">Instrumentation</option>
+    </select>
     <input id="budgetAmtInp" type="number" min="0" step="1000" placeholder="Budget amount ($)" style="padding:6px 9px;border:1px solid var(--border);border-radius:6px;font-size:13px;width:180px;outline:none">
     <button onclick="saveSelectedBudget()" class="btn btn-primary" style="padding:6px 14px">💾 Save Budget</button>
   </div>
