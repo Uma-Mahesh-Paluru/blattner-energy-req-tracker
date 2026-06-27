@@ -808,7 +808,7 @@ const HARDCODED_CFG={
   projectId:"ejde-tracker",
   storageBucket:"ejde-tracker.firebasestorage.app",
   messagingSenderId:"815182547690",
-  appId:"1:815182547690:web:fd8fe197aed2ddacd6a593"
+  appId:"1:815182547690:web:63c4f12740d2508fc427b4"
 };
 const HARDCODED_TEAM=[
   {name:"Uma Paluru",email:"upaluru@blattnerenergy.com"},
@@ -1428,4 +1428,4 @@ function sendOverdueDigest(){
   });
   if(overdue.length===0){showToast('No overdue items!');return;}
   const lines=overdue.map(d=>`  - REQ #${d.req_num||d._key} | ${d.desc1||'N/A'} | Qty: ${d.qty||''} | REQ Date: ${d.required_date||''} | Status: ${d.status||''}`).join('\n');
-  const body=`Hi Team,\n\nThe following ${overdue.length} item(s) ar
+ 
